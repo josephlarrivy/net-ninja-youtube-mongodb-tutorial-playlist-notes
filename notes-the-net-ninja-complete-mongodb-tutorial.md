@@ -233,3 +233,27 @@ Updating documents
         - db.books.updateOne({_id: ObjectId("xxxxxxxx)}, {$set: {rating: 8}})
     - updating two fields:
         - db.books.updateOne({_id: ObjectId("xxxxxxxx)}, {$set: {rating: 8, pages: 360}})
+- .updateMany()
+    - same as above, but first argument (the find part) can select multiple
+- other updating operators
+    - $inc
+        - db.books.updateOne({_id: ObjectId("xxxxxxxx)}, {$inc: {rating: 2}})
+            - this will increment the rating by 2 (2 is the value passed in)
+        - db.books.updateOne({_id: ObjectId("xxxxxxxx)}, {$inc: {rating: -2}})
+            - this will decrement the rating by 2 (2 is the value passed in)
+    - $pull
+        - db.books.updateOne({_id: ObjectId("xxxxxxxx)}, {$pull: {genres: 'fantasy'}})
+            - this will pull (remove) an item from an array ('fantasy' will not longer me in array)
+    - $push
+        - db.books.updateOne({_id: ObjectId("xxxxxxxx)}, {$push: {genres: 'fantasy'}})
+            - this will push (add) an item to an array
+    - $each
+        - db.books.updateOne({_id: ObjectId("xxxxxxxx)}, {$push: {genres: {$each: ['genre1', 'genre2']}}})
+        - can push multiple item to an array in a doc
+
+
+
+
+
+USING DRIVERS
+- node, python, ect each have their ouwn drivers to interact with mongo
